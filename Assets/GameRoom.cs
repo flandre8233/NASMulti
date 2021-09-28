@@ -208,7 +208,7 @@ public class GameData
             {
                 return Map[i];
             }
-            if (Map[i] != 0 && Map[i] == Map[i + 1] && Map[i] == Map[i + 2])
+            if (Map[i*3] != 0 && Map[i] == Map[i + 1] && Map[i] == Map[i + 2])
             {
                 return Map[i];
             }
