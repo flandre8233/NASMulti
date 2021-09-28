@@ -2,13 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeaveCurrentRoom : MonoBehaviour
+public class LeaveCurrentRoom : SingletonMonoBehavior<LeaveCurrentRoom>
 {
-    public static void Create()
-    {
-        GameObject SpawnObject = new GameObject(typeof(LeaveCurrentRoom).ToString());
-        LeaveCurrentRoom Component = SpawnObject.AddComponent<LeaveCurrentRoom>();
-    }
+
     string LeavingRoomName;
     public void LeaveThisRoom()
     {
@@ -20,8 +16,6 @@ public class LeaveCurrentRoom : MonoBehaviour
         GameRoom.instance.OnPulled += MarkLeaveID;
         GameRoom.instance.OnPulled += AbandonedCheck;
         GameRoom.instance.Sync();
-
-
     }
 
     void DeLink()
@@ -56,5 +50,6 @@ public class LeaveCurrentRoom : MonoBehaviour
             }
         }
     }
+
 
 }
