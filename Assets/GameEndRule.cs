@@ -37,6 +37,7 @@ public class GameEndRule : SingletonMonoBehavior<GameEndRule>
     {
         EndReason = 1;
         PlayerData.instance.OnPulled += WinCount;
+        LeaveCurrentRoom.instance.LeaveThisRoom();
         blocker.SetActive(true);
         RoomControll.instance.blocker.SetActive(false);
     }
@@ -44,7 +45,7 @@ public class GameEndRule : SingletonMonoBehavior<GameEndRule>
     {
         EndReason = 2;
         PlayerData.instance.OnPulled += LoseCount;
-
+        LeaveCurrentRoom.instance.LeaveThisRoom();
         blocker.SetActive(true);
         RoomControll.instance.blocker.SetActive(false);
 
@@ -53,7 +54,7 @@ public class GameEndRule : SingletonMonoBehavior<GameEndRule>
     {
         EndReason = 3;
         PlayerData.instance.OnPulled += LoseCount;
-
+        LeaveCurrentRoom.instance.LeaveThisRoom();
         blocker.SetActive(true);
         RoomControll.instance.blocker.SetActive(false);
     }

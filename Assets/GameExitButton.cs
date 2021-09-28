@@ -7,6 +7,5 @@ public class GameExitButton : CommonUIButton
     protected override void Click()
     {
         StatusChanger.instance.ChangeToLobby();
-        LeaveCurrentRoom.instance.LeaveThisRoom();
     }
 }
