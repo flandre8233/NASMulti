@@ -15,6 +15,8 @@ public class LeaveCurrentRoom : SingletonMonoBehavior<LeaveCurrentRoom>
 
         GameRoom.instance.OnPulled += MarkLeaveID;
         GameRoom.instance.OnPulled += AbandonedCheck;
+        GameRoom.instance.OnPulled += GameRoom.instance.UpdateCommitVersion;
+
         GameRoom.instance.Sync();
     }
 

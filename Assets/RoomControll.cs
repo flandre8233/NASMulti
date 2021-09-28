@@ -41,6 +41,7 @@ public class RoomControll : SingletonMonoBehavior<RoomControll>
         ChangeTurn();
         GameRoom.instance.OnPulled += OnPlayerHitBox;
         GameRoom.instance.OnPulled += ChangeTurn;
+        GameRoom.instance.OnPulled += GameRoom.instance.UpdateCommitVersion;
         GameRoom.instance.Sync();
 
         GameEndRule.instance.Check();

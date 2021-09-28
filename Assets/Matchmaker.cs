@@ -41,6 +41,7 @@ public class Matchmaker : MonoBehaviour
         MatchGameID = TargetInfo.RoomName;
 
         GameRoom.instance.OnPulled += SyncRoomInfo;
+        GameRoom.instance.OnPulled += GameRoom.instance.UpdateCommitVersion;
         GameRoom.instance.Sync();
     }
 

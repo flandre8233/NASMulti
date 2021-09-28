@@ -8,23 +8,27 @@ public class GameEndRule : SingletonMonoBehavior<GameEndRule>
     public int EndReason = 0;
     public void Check()
     {
-        if (GameRoom.instance.Room.GameData.IsFullPlayed())
-        {
-            Draw();
-            return;
-        }
+       
         int WhoWin = GameRoom.instance.Room.GameData.CheckWhoConnectLine();
         if (WhoWin > 0)
         {
             if (WhoWin == RoomControll.instance.PlayerBelongTag)
             {
                 PlayerWin();
+            return;
 
             }
             else
             {
                 PlayerLose();
+            return;
+
             }
+        }
+
+         if (GameRoom.instance.Room.GameData.IsFullPlayed())
+        {
+            Draw();
         }
 
     }
