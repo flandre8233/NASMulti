@@ -24,6 +24,7 @@ public class RoomControll : SingletonMonoBehavior<RoomControll>
 
     void OnPlayerHitBox()
     {
+        GameRoom.instance.Room.GameData.SetMapContent(NewChangeX, NewChangeY, PlayerBelongTag);
         GetComponent<MapView>().DrawMap(NewChangeX, NewChangeY, PlayerBelongTag);
     }
 
@@ -36,7 +37,6 @@ public class RoomControll : SingletonMonoBehavior<RoomControll>
         }
         NewChangeX = x;
         NewChangeY = y;
-        GameRoom.instance.Room.GameData.SetMapContent(NewChangeX, NewChangeY, PlayerBelongTag);
         OnPlayerHitBox();
         ChangeTurn();
         GameRoom.instance.Push();

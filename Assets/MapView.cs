@@ -11,7 +11,6 @@ public class MapView : SingletonMonoBehavior<MapView>
 
     public void DrawMap(int x, int y, int content)
     {
-        GameRoom.instance.Room.GameData.SetMapContent(x, y, content);
         GameData Data = GameRoom.instance.Room.GameData;
         MapViews[x, y].GetComponent<BelongChanger>().Belong(content);
     }
