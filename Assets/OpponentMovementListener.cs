@@ -22,6 +22,7 @@ public class OpponentMovementListener : MonoBehaviour
             MapView.instance.DrawMap();
             gameObject.SetActive(false);
         }
+        GameEndRule.instance.Check();
     }
 
     private void OnDisable()

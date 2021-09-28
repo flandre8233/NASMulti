@@ -187,4 +187,46 @@ public class GameData
     {
         Map[(y * 3) + x] = Content;
     }
+
+    public bool IsFullPlayed()
+    {
+        foreach (var item in Map)
+        {
+            if (item <= 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int CheckWhoConnectLine()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (Map[i] != 0 && Map[i] == Map[i + 3] && Map[i] == Map[i + 6])
+            {
+                return Map[i];
+            }
+            if (Map[i] != 0 && Map[i] == Map[i + 1] && Map[i] == Map[i + 2])
+            {
+                return Map[i];
+            }
+        }
+        if (Map[4] != 0 && Map[0] == Map[4] && Map[0] == Map[8])
+        {
+            return Map[0];
+        }
+
+        if (Map[4] != 0 && Map[2] == Map[4] && Map[2] == Map[6])
+        {
+            return Map[0];
+        }
+
+        return 0;
+
+    }
+
+
+
 }

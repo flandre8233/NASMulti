@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class RoomControll : SingletonMonoBehavior<RoomControll>
 {
-    int PlayerBelongTag;
+    public int PlayerBelongTag;
     int NewChangeX;
     int NewChangeY;
 
-    [SerializeField]
-    GameObject blocker;
+    public GameObject blocker;
     private void Start()
     {
         if (PlayerData.instance.Data.UID == GameRoom.instance.Room.Info.Player1)
@@ -27,25 +26,34 @@ public class RoomControll : SingletonMonoBehavior<RoomControll>
     {
         int x = NewChangeX;
         int y = NewChangeY;
-        GameRoom.instance.Room.GameData.SetMapContent(x, y, PlayerBelongTag);
-        GetComponent<MapView>().DrawMap(x, y);
+        GetComponent<MapView>().DrawMap(x, y, PlayerBelongTag);
     }
 
     public void OnPlayerHitBox(int x, int y)
     {
-        if (GameRoom.instance.Room.GameData.GetMapContent(x, y) == PlayerBelongTag)
+        NewChangeX = x;
+        NewChangeY = y;
+        if (GameRoom.instance.Room.GameData.GetMapContent(NewChangeX, NewChangeY) != 0)
         {
             return;
         }
+        GameRoom.instance.Room.GameData.SetMapContent(NewChangeX, NewChangeY, PlayerBelongTag);
+        GetComponent<MapView>().DrawMap(x, y, PlayerBelongTag);
 
-        GetComponent<MapView>().DrawMapUnSync(x, y, PlayerBelongTag);
-        blocker.SetActive(true);
-
-        NewChangeX = x;
-        NewChangeY = y;
         GameRoom.instance.OnPulled += OnPlayerHitBox;
         GameRoom.instance.OnPulled += ChangeTurn;
         GameRoom.instance.Sync();
+
+        GameEndRule.instance.Check();
+        blocker.SetActive(true);
+
+    }
+
+
+
+    void ResetMap()
+    {
+        GameRoom.instance.Room = new Room();
     }
 
     private void Update()

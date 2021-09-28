@@ -21,7 +21,6 @@ public class LeaveCurrentRoom : MonoBehaviour
         GameRoom.instance.OnPulled += AbandonedCheck;
         GameRoom.instance.Sync();
 
-        StatusChanger.instance.ChangeToLobby();
 
     }
 

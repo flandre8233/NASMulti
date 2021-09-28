@@ -9,26 +9,22 @@ public class MapView : SingletonMonoBehavior<MapView>
 
 
 
-    public void DrawMapUnSync(int x, int y, int content)
+    public void DrawMap(int x, int y, int content)
     {
+        GameRoom.instance.Room.GameData.SetMapContent(x, y, content);
         GameData Data = GameRoom.instance.Room.GameData;
         MapViews[x, y].GetComponent<BelongChanger>().Belong(content);
     }
 
-    public void DrawMap(int x, int y)
-    {
-        GameData Data = GameRoom.instance.Room.GameData;
-        DrawMapUnSync(x, y, Data.GetMapContent(x, y));
-    }
-
     public void DrawMap()
     {
+        GameData Data = GameRoom.instance.Room.GameData;
         int bounder = 3;
         for (int y = 0; y < bounder; y++)
         {
             for (int x = 0; x < bounder; x++)
             {
-                DrawMap(x, y);
+                DrawMap(x, y, Data.GetMapContent(x, y));
             }
         }
     }
