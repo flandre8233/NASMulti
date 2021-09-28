@@ -1540,7 +1540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba632cbe49e35418bb58f94b7901d09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsLoginByAdmin: 1
+  IsLoginByAdmin: 0
   Data:
     UID: Fuck
     Win: 0

@@ -6,7 +6,7 @@ public class OpponentMovementListener : MonoBehaviour
 {
     private void OnEnable()
     {
-        InvokeRepeating("SyncMap", 5f, 10f);
+        InvokeRepeating("SyncMap", 2f, 5f);
     }
 
     void SyncMap()
@@ -19,6 +19,7 @@ public class OpponentMovementListener : MonoBehaviour
     {
         if (RoomControll.instance.IsTurn())
         {
+            MapView.instance.DrawMap();
             gameObject.SetActive(false);
         }
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapView : MonoBehaviour
+public class MapView : SingletonMonoBehavior<MapView>
 {
     [SerializeField] Transform SpawnParent;
     GameObject[,] MapViews;
