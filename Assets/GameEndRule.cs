@@ -6,30 +6,32 @@ public class GameEndRule : SingletonMonoBehavior<GameEndRule>
 {
     [SerializeField] GameObject blocker;
     public int EndReason = 0;
-    public void Check()
+    public bool Check()
     {
-       
+
         int WhoWin = GameRoom.instance.Room.GameData.CheckWhoConnectLine();
         if (WhoWin > 0)
         {
             if (WhoWin == RoomControll.instance.PlayerBelongTag)
             {
                 PlayerWin();
-            return;
+                return true;
 
             }
             else
             {
                 PlayerLose();
-            return;
+                return true;
 
             }
         }
 
-         if (GameRoom.instance.Room.GameData.IsFullPlayed())
+        if (GameRoom.instance.Room.GameData.IsFullPlayed())
         {
             Draw();
+            return true;
         }
+        return false;
 
     }
 

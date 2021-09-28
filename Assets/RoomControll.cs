@@ -44,8 +44,10 @@ public class RoomControll : SingletonMonoBehavior<RoomControll>
         GameRoom.instance.OnPulled += GameRoom.instance.UpdateCommitVersion;
         GameRoom.instance.Sync();
 
-        GameEndRule.instance.Check();
-        blocker.SetActive(true);
+        if (!GameEndRule.instance.Check())
+        {
+            blocker.SetActive(true);
+        }
 
     }
 
