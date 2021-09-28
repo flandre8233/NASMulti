@@ -12,7 +12,7 @@ public class OpponentMovementListener : MonoBehaviour
     void SyncMap()
     {
         GameRoom.instance.OnPulled += CheckMyTurnNow;
-        GameRoom.instance.Sync();
+        GameRoom.instance.Pull();
     }
 
     void CheckMyTurnNow()
