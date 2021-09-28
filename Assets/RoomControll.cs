@@ -39,7 +39,9 @@ public class RoomControll : SingletonMonoBehavior<RoomControll>
         NewChangeY = y;
         OnPlayerHitBox();
         ChangeTurn();
-        GameRoom.instance.Push();
+        GameRoom.instance.OnPulled += OnPlayerHitBox;
+        GameRoom.instance.OnPulled += ChangeTurn;
+        GameRoom.instance.Sync();
 
         GameEndRule.instance.Check();
         blocker.SetActive(true);
