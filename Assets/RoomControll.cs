@@ -49,19 +49,9 @@ public class RoomControll : SingletonMonoBehavior<RoomControll>
 
     }
 
-
-
     void ResetMap()
     {
         GameRoom.instance.Room = new Room();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            LeaveCurrentRoom.Create();
-        }
     }
 
     void ChangeTurn()
