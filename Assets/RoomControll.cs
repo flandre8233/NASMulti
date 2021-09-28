@@ -24,25 +24,22 @@ public class RoomControll : SingletonMonoBehavior<RoomControll>
 
     void OnPlayerHitBox()
     {
-        int x = NewChangeX;
-        int y = NewChangeY;
-        GetComponent<MapView>().DrawMap(x, y, PlayerBelongTag);
+        GetComponent<MapView>().DrawMap(NewChangeX, NewChangeY, PlayerBelongTag);
     }
 
     public void OnPlayerHitBox(int x, int y)
     {
-        NewChangeX = x;
-        NewChangeY = y;
-        if (GameRoom.instance.Room.GameData.GetMapContent(NewChangeX, NewChangeY) != 0)
+
+        if (GameRoom.instance.Room.GameData.GetMapContent(x, y) != 0)
         {
             return;
         }
+        NewChangeX = x;
+        NewChangeY = y;
         GameRoom.instance.Room.GameData.SetMapContent(NewChangeX, NewChangeY, PlayerBelongTag);
-        GetComponent<MapView>().DrawMap(x, y, PlayerBelongTag);
-
-        GameRoom.instance.OnPulled += OnPlayerHitBox;
-        GameRoom.instance.OnPulled += ChangeTurn;
-        GameRoom.instance.Sync();
+        OnPlayerHitBox();
+        ChangeTurn();
+        GameRoom.instance.Push();
 
         GameEndRule.instance.Check();
         blocker.SetActive(true);
