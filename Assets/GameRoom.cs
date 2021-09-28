@@ -18,7 +18,7 @@ public class GameRoom : SingletonMonoBehavior<GameRoom>
 
     public void UpdateCommitVersion()
     {
-        Room.GameData.CommitVersion++;
+        Room.CommitVersion++;
     }
 
     public void Sync()
@@ -84,7 +84,7 @@ public class GameRoom : SingletonMonoBehavior<GameRoom>
         print(Result);
 
         Room NewRoom = JsonMapper.ToObject<Room>(Result);
-        if (NewRoom.GameData.CommitVersion >= Room.GameData.CommitVersion)
+        if (NewRoom.CommitVersion >= Room.CommitVersion)
         {
             Room = NewRoom;
         }
@@ -155,6 +155,7 @@ public class GameRoom : SingletonMonoBehavior<GameRoom>
 [System.Serializable]
 public class Room
 {
+    public int CommitVersion;
     public RoomInfo Info;
 
     public List<string> LeaveID;
@@ -162,11 +163,13 @@ public class Room
 
     public Room()
     {
+        CommitVersion = 0;
         LeaveID = new List<string>();
         GameData = new GameData();
     }
     public Room(RoomInfo _Info)
     {
+        CommitVersion = 0;
         Info = _Info;
         LeaveID = new List<string>();
         GameData = new GameData();
@@ -180,14 +183,12 @@ public class Room
 
 public class GameData
 {
-    public int CommitVersion;
     public int WhoTurn;
 
     public int[] Map;
 
     public GameData()
     {
-        CommitVersion = 0;
         WhoTurn = 0;
         Map = new int[3 * 3];
     }
