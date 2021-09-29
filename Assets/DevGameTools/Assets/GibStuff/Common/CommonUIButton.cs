@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public abstract class CommonUIButton : MonoBehaviour
 {
-    protected Button button;
+    public Button button;
 
     // Start is called before the first frame update
     protected virtual void Start()

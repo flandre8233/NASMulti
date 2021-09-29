@@ -983,6 +983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4befb308ea2d74f61a617d0d10764684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 631140828}
 --- !u!1 &690813119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,6 +2405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6bb1e8a18c3e4a06a83ed7c498a702c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 1932087045}
 --- !u!1 &1948186840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,6 +2627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Room:
+    CommitVersion: 0
     Info:
       RoomName: 
       Player1: 
